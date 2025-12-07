@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/* Fonte padrão semelhante ao site original */
+body {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+/* Remove sublinhado padrão em links */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Para deixar a página ocupando 100% de altura */
+html,
+body {
+  height: 100%;
+}

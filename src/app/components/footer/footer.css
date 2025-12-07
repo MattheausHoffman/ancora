@@ -1,0 +1,66 @@
+.footer-section {
+  padding: 30px 40px 15px 40px;
+  background-color: #ffffff;
+  margin-top: 40px;
+}
+
+.footer-top-line {
+  border-top: 1px solid #e0e0e0;
+  margin-bottom: 25px;
+}
+
+.footer-column h4 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.footer-list li a {
+  color: #555;
+}
+
+.footer-list li a:hover {
+  color: #0071b7;
+}
+
+.footer-menus {
+  margin-bottom: 20px;
+}
+
+.footer-bottom {
+  border-top: 1px solid transparent;
+}
+
+.footer-gov-icon-wrapper {
+  color: #004a7f;
+}
+
+.footer-gov-icon {
+  font-size: 22px;
+}
+
+.footer-gov-text {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .footer-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

@@ -1,0 +1,39 @@
+.top-gov-bar {
+  background-color: #004a7f;
+  color: #fff;
+  height: 50px;
+  font-size: 11px;
+}
+
+.gov-logo {
+  height: 28px;
+}
+
+.top-gov-menu .nav-link {
+  color: #ffffff;
+  padding: 0 12px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.top-gov-menu .nav-link:hover {
+  color: #ffdd00;
+}
+
+.temp-box {
+  background-color: #ffffff;
+  color: #333;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 11px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.accessibility-btn .btn {
+  font-size: 10px;
+  padding: 2px 6px;
+}
