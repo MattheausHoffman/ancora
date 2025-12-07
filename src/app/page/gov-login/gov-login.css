@@ -1,0 +1,336 @@
+/* fundo da página gov.br */
+.gov-login-page {
+  background-color: #f5f5f5;
+}
+
+/* cabeçalho gov.br */
+.gov-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+}
+
+.govbr-logo {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.govbr-logo-big {
+  font-size: 40px;
+}
+
+.govbr-g {
+  color: #1351b4; /* azul */
+}
+
+.govbr-o {
+  color: #ffb300; /* amarelo */
+}
+
+.govbr-v {
+  color: #00a650; /* verde */
+}
+
+.govbr-br {
+  color: #1351b4; /* azul */
+}
+
+.gov-header-right {
+  display: flex;
+  gap: 16px;
+}
+
+.header-link {
+  border: none;
+  background: transparent;
+  color: #1351b4;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.header-link:hover {
+  text-decoration: underline;
+}
+
+/* área central */
+.gov-main {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px 48px 16px;
+}
+
+.gov-main-wrapper {
+  max-width: 1120px;
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.gov-left {
+  flex: 3;
+}
+
+/* CARD DA IMAGEM */
+.left-card {
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+
+  /* AQUI GARANTIMOS ALTURA VISÍVEL */
+  height: 340px;          /* você pode ajustar para 320 / 360 se quiser */
+}
+
+/* IMAGEM PREENCHENDO TODO O CARD */
+.left-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* corta a imagem para preencher sem distorcer */
+}
+
+
+/* faixa amarela */
+.left-yellow-strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 26%;
+  left: 22%;
+  background-color: rgba(255, 193, 7, 0.8);
+}
+
+/* bloco de texto em cima da imagem */
+.left-text-block {
+  position: absolute;
+  top: 20%;
+  left: 48%;
+  right: 6%;
+  color: #333333;
+}
+
+.left-title {
+  font-size: 18px;
+  margin: 8px 0 4px 0;
+}
+
+.left-title-strong {
+  font-weight: 700;
+}
+
+.left-text {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* coluna direita - login */
+.gov-right {
+  flex: 2;
+  display: flex;
+}
+
+.login-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  padding: 20px 22px 18px 22px;
+  width: 100%;
+}
+
+.login-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #333333;
+}
+
+/* bloco "Número do CPF" */
+.login-main-option {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.login-main-icon {
+  font-size: 22px;
+  color: #1351b4;
+}
+
+.login-main-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.login-main-sub {
+  font-size: 12px;
+  color: #555555;
+}
+
+.inline-govbr {
+  font-weight: 700;
+  color: #1351b4;
+}
+
+/* formulário CPF */
+.cpf-form {
+  margin-top: 4px;
+}
+
+.cpf-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.cpf-input {
+  font-size: 13px;
+  padding: 8px 10px;
+}
+
+.cpf-input:focus {
+  box-shadow: none;
+  border-color: #1351b4;
+}
+
+.btn-continuar {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #1351b4;
+  border-color: #1351b4;
+  border-radius: 20px;
+  padding: 8px 0;
+}
+
+.btn-continuar:hover {
+  background-color: #0f3f8c;
+  border-color: #0f3f8c;
+}
+
+/* divisor de opções */
+.login-divider {
+  border-bottom: 1px solid #e0e0e0;
+  margin: 18px 0 12px 0;
+}
+
+.login-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* botões de opções alternativas */
+.alt-option {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #d4d4d4;
+  background-color: #ffffff;
+  padding: 7px 10px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.alt-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alt-option i {
+  font-size: 18px;
+  color: #1351b4;
+}
+
+.alt-option:hover {
+  background-color: #f7f7f7;
+}
+
+/* badge verde "Login seguro" */
+.alt-option-bank .bank-badge {
+  background-color: #1a7f37;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* links inferiores */
+.login-help {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.help-link,
+.terms-link {
+  color: #1351b4;
+}
+
+.help-link:hover,
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+/* responsividade */
+@media (max-width: 991.98px) {
+  .gov-main-wrapper {
+    flex-direction: column;
+    max-width: 720px;
+  }
+
+  .left-text-block {
+    top: 18%;
+    left: 50%;
+    right: 5%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .gov-header {
+    padding: 10px 16px;
+  }
+
+  .gov-main {
+    padding: 24px 8px 32px 8px;
+  }
+
+  .gov-main-wrapper {
+    max-width: 100%;
+  }
+
+  .left-text-block {
+    top: 18%;
+    left: 48%;
+    right: 3%;
+  }
+
+  .govbr-logo-big {
+    font-size: 32px;
+  }
+
+  .left-title {
+    font-size: 16px;
+  }
+
+  .left-text {
+    font-size: 12px;
+  }
+}

@@ -159,6 +159,17 @@
   height: 140px;
 }
 
+.service-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-card-link:hover .service-card {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .service-icon {
   margin-bottom: 12px;
 }
