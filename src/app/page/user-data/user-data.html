@@ -4,22 +4,26 @@
 
       <h2 class="user-data-title">Formulário do Usuário</h2>
 
-      <!-- Stepper -->
       <div class="user-data-steps">
         <div class="user-step active">1</div>
         <div class="user-step">2</div>
         <div class="user-step">3</div>
       </div>
 
-      <!-- Formulário -->
-      <form class="user-form">
+      <div *ngIf="errorMessage" class="alert alert-danger py-1 px-2 mb-2" style="font-size: 12px;">
+        {{ errorMessage }}
+      </div>
+
+      <form class="user-form" (ngSubmit)="onSubmit()">
         <div class="form-group mb-3">
           <label for="nome" class="form-label">Insira seu nome</label>
           <input
             id="nome"
+            name="nome"
             type="text"
             class="form-control"
             placeholder="Insira seu nome"
+            [(ngModel)]="nome"
           />
         </div>
 
@@ -27,9 +31,11 @@
           <label for="cpfCnpj" class="form-label">Escreva seu CPF/CNPJ</label>
           <input
             id="cpfCnpj"
+            name="cpfCnpj"
             type="text"
             class="form-control"
             placeholder="Escreva seu CPF/CNPJ"
+            [(ngModel)]="cpfCnpj"
           />
         </div>
 
@@ -37,9 +43,11 @@
           <label for="dataNasc" class="form-label">Data de nascimento</label>
           <input
             id="dataNasc"
+            name="dataNasc"
             type="text"
             class="form-control"
             placeholder="dd/mm/aaaa"
+            [(ngModel)]="dataNascimento"
           />
         </div>
 
@@ -47,19 +55,24 @@
           <label for="email" class="form-label">Gmail</label>
           <input
             id="email"
+            name="email"
             type="email"
             class="form-control"
             placeholder="Exemplo@gmail.com"
+            [(ngModel)]="email"
           />
         </div>
 
-        <!-- Botão de avançar -->
-        <form class="user-form-footer" (submit)="onSubmit($event)">
-
-          <button type="submit" class="btn btn-primary next-btn">
-            <i class="bi bi-arrow-right"></i>
+        <div class="user-form-footer">
+          <button
+            type="submit"
+            class="btn btn-primary next-btn"
+            [disabled]="loading"
+          >
+            <i class="bi bi-arrow-right" *ngIf="!loading"></i>
+            <span *ngIf="loading" style="font-size: 11px;">Enviando...</span>
           </button>
-        </form>
+        </div>
       </form>
     </div>
   </div>

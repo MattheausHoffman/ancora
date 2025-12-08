@@ -3,46 +3,56 @@
 
     <div class="payment-card">
 
-      <!-- Título -->
       <h2 class="payment-title">Pagamento PIX</h2>
 
-      <!-- Stepper -->
       <div class="payment-steps">
         <div class="payment-step active">1</div>
         <div class="payment-step active">2</div>
         <div class="payment-step active">3</div>
       </div>
 
-      <!-- Valor -->
       <div class="payment-value">
-        Valor de 25,00 Reais
+        Valor de {{ valor }},00 Reais
       </div>
 
-      <!-- Área do QRCode -->
+      <div *ngIf="pagamentoOk" class="alert alert-success py-1 px-2 mb-2" style="font-size: 12px;">
+        Pagamento registrado com sucesso.
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger py-1 px-2 mb-2" style="font-size: 12px;">
+        {{ errorMessage }}
+      </div>
+
       <div class="payment-qr-wrapper">
         <div class="payment-qr">
-          <img src="qr_code.png">
+          <img
+                  src="qr_code.png"
+                  alt="qr-code de pagamento"
+                  class="payment-qr-image"
+                />
         </div>
       </div>
 
-      <!-- Linha com código PIX -->
       <div class="payment-pix-code">
-        00020126480014BR.GOV.BCB.PIX0136+CHAVEFAKEPARAEXEMPLO000000000000000000000000000520400005303986540625.005802BR5925BOMBEIROS MILITAR PE6009RECIFE62070503***6304ABCD
+        00020126480014BR.GOV.BCB.PIX0136+CHAVEFAKEPARAEXEMPLO0000000000000000000000000005204000053039865406{{ valor }}.005802BR5925BOMBEIROS MILITAR PE6009RECIFE62070503***6304ABCD
       </div>
 
-      <!-- Botão copy/paste -->
       <button type="button" class="btn copy-btn">
         Copy and Past
       </button>
 
-      <!-- Navegação -->
       <div class="payment-nav">
         <a [routerLink]="'/forms-data'" class="btn nav-btn">
           <i class="bi bi-arrow-left"></i>
         </a>
-        <a [routerLink]="'/landing-page'" class="btn nav-btn">
-          <i class="bi bi-arrow-right"></i>
-        </a>
+        <button
+          type="button"
+          class="btn nav-btn"
+          (click)="confirmarPagamento()"
+          [disabled]="loading"
+        >
+          <i class="bi bi-arrow-right" *ngIf="!loading"></i>
+          <span *ngIf="loading" style="font-size: 11px;">Enviando...</span>
+        </button>
       </div>
 
     </div>
