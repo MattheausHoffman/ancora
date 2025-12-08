@@ -1,11 +1,16 @@
 <header class="top-gov-bar d-flex align-items-center justify-content-between px-4">
+  <!-- Logo governo -->
   <div class="d-flex align-items-center">
     <div class="gov-logo-icon-wrapper d-flex align-items-center">
-      <i class="bi bi-shield-fill gov-logo-icon"></i>
-      <span class="gov-logo-text ms-2">Governo de Pernambuco</span>
+      <img
+        src="/logo-gov-topbar.png"
+        alt="Governo de Pernambuco"
+        class="gov-logo-img"
+      />
     </div>
   </div>
 
+  <!-- Menu superior -->
   <nav class="top-gov-menu">
     <ul class="nav">
       <li class="nav-item">
@@ -21,11 +26,12 @@
         <a href="#" class="nav-link">APPC</a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="'/gov-login'" class="nav-link">OCORRÊNCIAS</a>
+        <a class="nav-link" [routerLink]="'/gov-login'">OCORRÊNCIAS</a>
       </li>
     </ul>
   </nav>
 
+  <!-- Temperatura / redes / acessibilidade -->
   <div class="d-flex align-items-center top-gov-right">
     <div class="temp-box text-center">28º C</div>
     <div class="social-icons d-flex align-items-center ms-3">

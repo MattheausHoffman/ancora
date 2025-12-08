@@ -71,6 +71,7 @@
 }
 
 .hero-overlay {
+  /* overlay branco levemente translúcido, sem imagem de fundo */
   background: rgba(255, 255, 255, 0.9);
   height: 100%;
   padding: 25px 40px 20px 40px;
@@ -80,13 +81,18 @@
   align-items: center;
 }
 
+/* wrapper do brasão */
 .hero-logo-icon-wrapper {
   margin-right: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.hero-logo-icon {
-  font-size: 64px;
-  color: #e53935;
+/* imagem do brasão */
+.hero-logo-img {
+  height: 125px;
+  width: auto;
+  display: block;
 }
 
 .hero-title h1 {
@@ -136,8 +142,8 @@
 
 /* Seções */
 .section-title {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: bold;
   color: #0071b7;
   text-transform: uppercase;
   margin: 25px 0 12px 0;
@@ -393,8 +399,9 @@
     display: none;
   }
 
-  .hero-logo-icon {
-    font-size: 48px;
+  /* reduz o brasão em telas menores */
+  .hero-logo-img {
+    height: 60px;
   }
 
   .hero-title h1 {

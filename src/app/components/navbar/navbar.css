@@ -5,8 +5,20 @@
   font-size: 11px;
 }
 
-.gov-logo {
-  height: 28px;
+.gov-logo-icon-wrapper {
+  height: 32px;
+}
+
+.gov-logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* ainda deixo essas classes caso estejam usadas em outro lugar */
+.gov-logo-text {
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .top-gov-menu .nav-link {
