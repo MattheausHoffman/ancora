@@ -1,0 +1,136 @@
+/* Página de fundo com imagem */
+.user-data-page {
+  min-height: calc(100vh - 50px); /* ajusta considerando a navbar que você já tem */
+  background-image: url('/CBMPE.png'); /* ajuste o nome do arquivo se for outro */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+/* Overlay translúcido */
+.user-data-overlay {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+/* Card central do formulário */
+.user-data-card {
+  background-color: transparent;
+  max-width: 420px;
+  width: 100%;
+}
+
+/* Título */
+.user-data-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Stepper */
+.user-data-steps {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.user-step {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #d0d0d0;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-step.active {
+  background-color: #f37021; /* laranja */
+  color: #ffffff;
+}
+
+/* Formulário */
+.user-form {
+  padding: 0 8px;
+}
+
+.form-label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  height: 34px;
+  padding: 6px 8px;
+}
+
+.form-control::placeholder {
+  color: #aaaaaa;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0071b7;
+}
+
+/* Rodapé do formulário com o botão */
+.user-form-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botão circular azul com seta */
+.next-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0052cc;
+  border-color: #0052cc;
+}
+
+.next-btn i {
+  font-size: 18px;
+}
+
+.next-btn:hover {
+  background-color: #003f99;
+  border-color: #003f99;
+}
+
+/* Responsivo */
+@media (max-width: 767.98px) {
+  .user-data-overlay {
+    padding: 16px 12px;
+  }
+
+  .user-data-card {
+    max-width: 360px;
+  }
+
+  .user-data-title {
+    font-size: 18px;
+  }
+
+  .user-step {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,1 +1,65 @@
-<p>user-data works!</p>
+<div class="user-data-page">
+  <div class="user-data-overlay">
+    <div class="user-data-card">
+
+      <h2 class="user-data-title">Formulário do Usuário</h2>
+
+      <!-- Stepper -->
+      <div class="user-data-steps">
+        <div class="user-step active">1</div>
+        <div class="user-step">2</div>
+        <div class="user-step">3</div>
+      </div>
+
+      <!-- Formulário -->
+      <form class="user-form">
+        <div class="form-group mb-3">
+          <label for="nome" class="form-label">Insira seu nome</label>
+          <input
+            id="nome"
+            type="text"
+            class="form-control"
+            placeholder="Insira seu nome"
+          />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="cpfCnpj" class="form-label">Escreva seu CPF/CNPJ</label>
+          <input
+            id="cpfCnpj"
+            type="text"
+            class="form-control"
+            placeholder="Escreva seu CPF/CNPJ"
+          />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="dataNasc" class="form-label">Data de nascimento</label>
+          <input
+            id="dataNasc"
+            type="text"
+            class="form-control"
+            placeholder="dd/mm/aaaa"
+          />
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="email" class="form-label">Gmail</label>
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            placeholder="Exemplo@gmail.com"
+          />
+        </div>
+
+        <!-- Botão de avançar -->
+        <div class="user-form-footer">
+          <button type="submit" class="btn btn-primary next-btn">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
