@@ -37,6 +37,20 @@ app.post('/api/user-data', async (req, res) => {
       return res.status(400).json({ error: 'nome é obrigatório' });
     }
 
+    const cpfDigits = cpf ? String(cpf).replace(/\D/g, '') : null;
+    const cnpjDigits = cnpj ? String(cnpj).replace(/\D/g, '') : null;
+
+    if (!cpfDigits && !cnpjDigits) {
+      return res.status(400).json({ error: 'cpf ou cnpj é obrigatório' });
+    }
+
+    if (cpfDigits && cpfDigits.length !== 11) {
+      return res.status(400).json({ error: 'cpf inválido: deve conter 11 dígitos' });
+    }
+    if (cnpjDigits && cnpjDigits.length !== 14) {
+      return res.status(400).json({ error: 'cnpj inválido: deve conter 14 dígitos' });
+    }
+
     let dataNascSql = null;
     if (dataNascimento) {
       if (dataNascimento.includes('/')) {
@@ -50,7 +64,7 @@ app.post('/api/user-data', async (req, res) => {
     const [result] = await db.execute(
       `INSERT INTO Usuario (nome, cpf, cnpj, email, data_nascimento)
        VALUES (?, ?, ?, ?, ?)`,
-      [nome.trim(), cpf || null, cnpj || null, email || null, dataNascSql]
+      [nome.trim(), cpfDigits || null, cnpjDigits || null, email || null, dataNascSql]
     );
 
     return res.status(201).json({

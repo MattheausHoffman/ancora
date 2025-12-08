@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <form class="cpf-form" (submit)="onSubmit($event)">
+          <form class="cpf-form">
             <label for="cpf" class="cpf-label">CPF</label>
             <input
               id="cpf"
@@ -59,7 +59,7 @@
               placeholder="Digite seu CPF"
             />
 
-            <button type="submit" class="btn btn-primary btn-continuar">
+            <button type="button" class="btn btn-primary btn-continuar" (click)="onContinuar()">
               Continuar
             </button>
           </form>

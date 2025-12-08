@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-gov-login',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './gov-login.html',
   styleUrl: './gov-login.css',
 })
 export class GovLogin {
   constructor(private router: Router) {}
 
-  onSubmit(event: Event): void {
-    event.preventDefault();
-    // aqui você poderia validar o CPF, chamar API etc.
-    // por enquanto apenas navega para o formulário de usuário
+  onContinuar(): void {
     this.router.navigate(['/user-data']);
   }
 }

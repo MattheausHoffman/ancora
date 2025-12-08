@@ -289,6 +289,87 @@
   text-decoration: underline;
 }
 
+/* Acessibilidade - Alto Contraste */
+:root.high-contrast-mode {
+  --color-bg: #000;
+  --color-text: #ffff00;
+  --color-border: #ffff00;
+  --color-button-bg: #ffff00;
+  --color-button-text: #000;
+}
+
+:root.high-contrast-mode {
+  background-color: #000;
+  color: #ffff00;
+}
+
+:root.high-contrast-mode body {
+  background-color: #000;
+  color: #ffff00;
+}
+
+:root.high-contrast-mode .gov-header {
+  background-color: #000;
+  border-bottom: 3px solid #ffff00;
+}
+
+:root.high-contrast-mode .header-link {
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+:root.high-contrast-mode .header-link:hover {
+  background-color: #ffff00;
+  color: #000;
+}
+
+:root.high-contrast-mode .form-control,
+:root.high-contrast-mode .form-control input {
+  background-color: #000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+:root.high-contrast-mode .btn-primary {
+  background-color: #ffff00;
+  color: #000;
+  border: 2px solid #ffff00;
+}
+
+:root.high-contrast-mode .btn-primary:hover {
+  background-color: #000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+:root.high-contrast-mode .login-card {
+  background-color: #000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+/* Botão de acessibilidade ativo */
+.header-link.active {
+  background-color: rgba(255, 255, 0, 0.2);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+/* Melhorar foco para navegação por teclado */
+.header-link:focus,
+.form-control:focus,
+.btn:focus {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+}
+
+:root.high-contrast-mode .header-link:focus,
+:root.high-contrast-mode .form-control:focus,
+:root.high-contrast-mode .btn:focus {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+}
+
 /* responsividade */
 @media (max-width: 991.98px) {
   .gov-main-wrapper {
