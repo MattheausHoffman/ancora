@@ -54,11 +54,12 @@
         </div>
 
         <!-- Botão de avançar -->
-        <div class="user-form-footer">
+        <form class="user-form-footer" (submit)="onSubmit($event)">
+
           <button type="submit" class="btn btn-primary next-btn">
             <i class="bi bi-arrow-right"></i>
           </button>
-        </div>
+        </form>
       </form>
     </div>
   </div>

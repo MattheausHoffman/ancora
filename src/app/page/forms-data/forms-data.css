@@ -1,0 +1,178 @@
+/* fundo cinza claro, card central */
+.forms-data-page {
+  min-height: calc(100vh - 50px); /* desconta navbar */
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+
+
+/* título */
+.forms-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* stepper 1 2 3 */
+.forms-steps {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.forms-step {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.forms-step.active {
+  background-color: #f37021; /* laranja */
+  color: #ffffff;
+}
+
+/* card de documentos */
+.docs-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 12px 14px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.docs-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.docs-body {
+  line-height: 1.35;
+}
+
+/* botão azul "Anexe seus documentos" */
+.attach-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  background-color: #0052cc;
+  border-color: #0052cc;
+  border-radius: 22px;
+  padding: 6px 18px;
+  gap: 8px;
+}
+
+.attach-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #f37021;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attach-circle i {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.attach-text {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* formulário */
+.forms-data-form {
+  margin-top: 4px;
+}
+
+.form-label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.form-control {
+  background-color: #ffffff;
+  border-radius: 0;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
+.form-control::placeholder {
+  color: #aaaaaa;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0071b7;
+}
+
+/* textarea maior, como no mock */
+.forms-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* botões de navegação */
+.forms-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 8px;
+}
+
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0052cc;
+  border-color: #0052cc;
+}
+
+.nav-btn i {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.nav-btn:hover {
+  background-color: #003f99;
+  border-color: #003f99;
+}
+
+/* responsivo */
+@media (max-width: 575.98px) {
+  .forms-data-card {
+    max-width: 360px;
+    padding: 20px 16px 24px 16px;
+  }
+
+  .forms-title {
+    font-size: 18px;
+  }
+
+  .forms-step {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -3,6 +3,7 @@ import { LandingPage } from './page/landing-page/landing-page';
 import { GovLogin } from './page/gov-login/gov-login';
 import { UserData } from './page/user-data/user-data';
 import { FormsData } from './page/forms-data/forms-data';
+import { PaymentPage } from './page/payment-page/payment-page';
 
 export const routes: Routes = [
 {
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: 'forms-data',
     component: FormsData,
+    data: { hideFooter: true }
+  },
+  {
+    path: 'payment-page',
+    component: PaymentPage,
     data: { hideFooter: true }
   },
   {

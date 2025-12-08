@@ -1,1 +1,63 @@
-<p>forms-data works!</p>
+<div class="forms-data-page">
+  <div class="forms-data-card">
+
+    <h2 class="forms-title">Formulário de Dados</h2>
+
+    <!-- Stepper -->
+    <div class="forms-steps">
+      <div class="forms-step active">1</div>
+      <div class="forms-step active">2</div>
+      <div class="forms-step">3</div>
+    </div>
+
+    <!-- Card de instruções -->
+    <div class="docs-card">
+      <div class="docs-title">Anexe os seguintes documentos (Opcional)</div>
+      <div class="docs-body">
+        Documento que comprove vínculo com a vítima<br />
+        Procuração com firma reconhecida (se for representante legal)
+      </div>
+    </div>
+
+    <!-- Botão azul de anexar -->
+    <button type="button" class="btn attach-btn">
+      <span class="attach-circle">
+        <i class="bi bi-upload"></i>
+      </span>
+      <span class="attach-text">Anexe seus documentos</span>
+    </button>
+
+    <!-- Form -->
+    <form class="forms-data-form">
+      <div class="mb-3">
+        <label for="tema" class="form-label">Tema</label>
+        <input
+          id="tema"
+          type="text"
+          class="form-control"
+          placeholder="Ex: Acidente com carro"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="descricao" class="form-label">Descreva o ocorrido</label>
+        <textarea
+          id="descricao"
+          class="form-control forms-textarea"
+          placeholder=""
+        ></textarea>
+      </div>
+
+      <!-- Navegação: voltar e avançar -->
+      <div class="forms-nav">
+        <a [routerLink]="'/user-data'" class="btn nav-btn nav-prev" type="button">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+        <a [routerLink]="'/payment-page'" class="btn nav-btn nav-next" type="button">
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </form>
+
+  </div>
+</div>
