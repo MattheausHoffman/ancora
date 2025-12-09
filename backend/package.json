@@ -1,7 +1,7 @@
 {
   "name": "ancora-backend",
   "version": "1.0.0",
-  "description": "Backend Ancora - CBMPE ocorrencias, pagamentos e documentos",
+  "description": "Backend Ancora - CBMPE ocorrencias, pagamentos e documentos (SQLite)",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -10,7 +10,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "mysql2": "^3.9.7"
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

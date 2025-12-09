@@ -1,13 +1,25 @@
 // backend/src/server.js
 const express = require('express');
 const cors = require('cors');
-const db = require('./db');
+const { run, get, all, initDb } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+/**
+ * Inicializa o banco (cria tabelas se necessário)
+ */
+initDb()
+  .then(() => {
+    console.log('Banco SQLite inicializado (ancora.db)');
+  })
+  .catch((err) => {
+    console.error('Erro ao inicializar o banco SQLite:', err);
+    process.exit(1);
+  });
 
 /**
  * Gera um número de protocolo simples (12 dígitos).
@@ -20,7 +32,7 @@ function gerarProtocolo() {
 
 /**
  * POST /api/user-data
- * Corpo esperado:
+ * Corpo:
  * {
  *   nome,
  *   cpf,
@@ -33,22 +45,8 @@ app.post('/api/user-data', async (req, res) => {
   try {
     const { nome, cpf, cnpj, email, dataNascimento } = req.body;
 
-    if (!nome || !nome.trim()) {
+    if (!nome) {
       return res.status(400).json({ error: 'nome é obrigatório' });
-    }
-
-    const cpfDigits = cpf ? String(cpf).replace(/\D/g, '') : null;
-    const cnpjDigits = cnpj ? String(cnpj).replace(/\D/g, '') : null;
-
-    if (!cpfDigits && !cnpjDigits) {
-      return res.status(400).json({ error: 'cpf ou cnpj é obrigatório' });
-    }
-
-    if (cpfDigits && cpfDigits.length !== 11) {
-      return res.status(400).json({ error: 'cpf inválido: deve conter 11 dígitos' });
-    }
-    if (cnpjDigits && cnpjDigits.length !== 14) {
-      return res.status(400).json({ error: 'cnpj inválido: deve conter 14 dígitos' });
     }
 
     let dataNascSql = null;
@@ -61,21 +59,20 @@ app.post('/api/user-data', async (req, res) => {
       }
     }
 
-    const [result] = await db.execute(
+    const result = await run(
       `INSERT INTO Usuario (nome, cpf, cnpj, email, data_nascimento)
        VALUES (?, ?, ?, ?, ?)`,
-      [nome.trim(), cpfDigits || null, cnpjDigits || null, email || null, dataNascSql]
+      [nome, cpf || null, cnpj || null, email || null, dataNascSql]
     );
 
     return res.status(201).json({
-      idUsuario: result.insertId,
-      message: 'Usuário salvo com sucesso'
+      idUsuario: result.id
     });
   } catch (err) {
     console.error('Erro em /api/user-data:', err);
     return res.status(500).json({
       error: 'Erro ao salvar usuário',
-      details: err.message
+      details: err && err.message ? err.message : String(err)
     });
   }
 });
@@ -93,57 +90,53 @@ app.post('/api/user-data', async (req, res) => {
  * }
  */
 app.post('/api/forms-data', async (req, res) => {
-  const connection = await db.getConnection();
   try {
     const { idUsuario, tema, descricao, documentos } = req.body;
 
     if (!idUsuario) {
-      connection.release();
       return res.status(400).json({ error: 'idUsuario é obrigatório' });
     }
 
-    if (!descricao || !descricao.trim()) {
-      connection.release();
-      return res.status(400).json({ error: 'descricao é obrigatória' });
-    }
-
-    await connection.beginTransaction();
+    // Início da transação manual em SQLite
+    await run('BEGIN TRANSACTION');
 
     const protocolo = gerarProtocolo();
 
-    const [ocResult] = await connection.execute(
+    const ocResult = await run(
       `INSERT INTO Ocorrencia (id_usuario, protocolo, tema, descricao, data_criacao)
-       VALUES (?, ?, ?, ?, CURDATE())`,
-      [idUsuario, protocolo, tema || null, descricao.trim()]
+       VALUES (?, ?, ?, ?, DATE('now'))`,
+      [idUsuario, protocolo, tema || null, descricao || null]
     );
 
-    const idOcorrencia = ocResult.insertId;
+    const idOcorrencia = ocResult.id;
 
     if (Array.isArray(documentos) && documentos.length > 0) {
       for (const doc of documentos) {
-        await connection.execute(
+        await run(
           `INSERT INTO Documento (id_ocorrencia, nome_arquivo, tipo_documento, data_upload)
-           VALUES (?, ?, ?, CURDATE())`,
+           VALUES (?, ?, ?, DATE('now'))`,
           [idOcorrencia, doc.nomeArquivo || '', doc.tipoDocumento || null]
         );
       }
     }
 
-    await connection.commit();
-    connection.release();
+    await run('COMMIT');
 
     return res.status(201).json({
       idOcorrencia,
-      protocolo,
-      message: 'Ocorrência salva com sucesso'
+      protocolo
     });
   } catch (err) {
-    await connection.rollback();
-    connection.release();
+    // Em caso de erro, tenta fazer rollback
+    try {
+      await run('ROLLBACK');
+    } catch (rollbackErr) {
+      console.error('Erro ao fazer ROLLBACK:', rollbackErr);
+    }
     console.error('Erro em /api/forms-data:', err);
     return res.status(500).json({
       error: 'Erro ao salvar ocorrência',
-      details: err.message
+      details: err && err.message ? err.message : String(err)
     });
   }
 });
@@ -157,9 +150,6 @@ app.post('/api/forms-data', async (req, res) => {
  *   formaPagamento: 'PIX' | 'CARTAO' | 'BOLETO',
  *   pago: boolean
  * }
- *
- * Se pago === true -> grava em Pagamento.
- * Se pago === false -> não grava, só retorna paid: false.
  */
 app.post('/api/payment', async (req, res) => {
   try {
@@ -168,13 +158,14 @@ app.post('/api/payment', async (req, res) => {
     if (!idOcorrencia) {
       return res.status(400).json({ error: 'idOcorrencia é obrigatório' });
     }
-    if (!valor || valor <= 0) {
-      return res.status(400).json({ error: 'valor inválido' });
+    if (!valor) {
+      return res.status(400).json({ error: 'valor é obrigatório' });
     }
     if (!formaPagamento) {
       return res.status(400).json({ error: 'formaPagamento é obrigatória' });
     }
 
+    // Se pagamento ainda não foi confirmado, não grava nada
     if (!pago) {
       return res.status(200).json({
         paymentSaved: false,
@@ -183,34 +174,33 @@ app.post('/api/payment', async (req, res) => {
       });
     }
 
-    const [result] = await db.execute(
-      `INSERT INTO Pagamento (id_ocorrencia, valor, forma_pagamento)
-       VALUES (?, ?, ?)`,
+    const result = await run(
+      `INSERT INTO Pagamento (id_ocorrencia, valor, data_pagamento, forma_pagamento)
+       VALUES (?, ?, DATETIME('now'), ?)`,
       [idOcorrencia, valor, formaPagamento]
     );
 
     return res.status(201).json({
-      idPagamento: result.insertId,
+      idPagamento: result.id,
       paymentSaved: true,
-      paid: true,
-      message: 'Pagamento registrado com sucesso'
+      paid: true
     });
   } catch (err) {
     console.error('Erro em /api/payment:', err);
     return res.status(500).json({
       error: 'Erro ao registrar pagamento',
-      details: err.message
+      details: err && err.message ? err.message : String(err)
     });
   }
 });
 
 /**
- * GET simples só pra testar se o backend está no ar
+ * GET /api/health – só para testar se o backend está no ar
  */
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
 app.listen(PORT, () => {
-  console.log(`Ancora backend rodando na porta ${PORT}`);
+  console.log(`Ancora backend (SQLite) rodando na porta ${PORT}`);
 });
