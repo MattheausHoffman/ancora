@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AncoraApi {
-  private apiUrl = '18.228.188.192:80/api';
+  private apiUrl = 'http://18.228.188.192:80/api';
 
   currentUserId: number | null = null;
   currentOcorrenciaId: number | null = null;
